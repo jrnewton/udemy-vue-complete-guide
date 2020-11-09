@@ -17,10 +17,6 @@ const app = Vue.createApp({
       this.counter -= num;
     }, 
 
-    setName(event) { 
-      this.name = event.target.value/*vanilla JS*/;
-    },
-
     submitForm() { 
       alert('Submitted!');
     }, 

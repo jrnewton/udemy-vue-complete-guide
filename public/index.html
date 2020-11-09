@@ -22,8 +22,12 @@
       <!-- event modifier: right -->
       <button @click="reduce(5)" @click.right="reduce(10)">Reduce</button>
       <p>Result: {{ counter }}</p>
-      
+      <!-- 
       <input type="text" :value="name" @input="setName"></input>
+      -->
+      <!-- v-model is equivalent to v-bind and v-on:input -->
+      <input type="text" v-model="name">
+
       <button @click="resetInput">Reset Input</button>
 
       <p>Your Name: {{ name }}</p>
