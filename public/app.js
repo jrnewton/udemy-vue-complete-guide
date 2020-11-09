@@ -1,45 +1,45 @@
 'use strict';
 
 const app = Vue.createApp({
-  data() { 
+  data() {
     return {
       counter: 0,
       name: '',
       lastName: ''
     };
   },
-  
-  watch: { 
-    counter(value) { 
-      if (value > 50) { 
+
+  watch: {
+    counter(value) {
+      if (value > 50) {
         const that = this;
-        setTimeout(function() { 
+        setTimeout(function () {
           that.counter = 0;
         }, 2000);
       }
     }
-  }, 
+  },
 
-  computed: { 
-    fullname() { 
+  computed: {
+    fullname() {
       return this.name + ' ' + this.lastName;
     }
-  }, 
+  },
 
-  methods: { 
-    add(num) { 
+  methods: {
+    add(num) {
       this.counter += num;
-    }, 
+    },
 
-    reduce(num) { 
+    reduce(num) {
       this.counter -= num;
-    }, 
+    },
 
-    submitForm() { 
+    submitForm() {
       alert('Submitted!');
-    }, 
+    },
 
-    resetInput() { 
+    resetInput() {
       this.name = '';
     }
   }
