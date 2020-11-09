@@ -8,6 +8,17 @@ const app = Vue.createApp({
     };
   },
   
+  computed: { 
+    fullname() { 
+      if (this.name === '') { 
+        return '';
+      }
+      else { 
+        return this.name + ' ' + 'Newton';
+      }
+    }
+  }, 
+  
   methods: { 
     add(num) { 
       this.counter += num;
