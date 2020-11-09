@@ -6,20 +6,18 @@ const app = Vue.createApp({
       counter: 0,
       name: '',
       lastName: ''
-//      fullname: ''
     };
   },
   
   watch: { 
-    /* watcher must have same name as a data or computed property.
-       this function will be executed when the property changes */
-    // name(value, oldValue) {
-    //   this.fullname = value + ' ' + this.lastName;
-    // }, 
-
-    // lastName(value, oldValue) {
-    //   this.fullname = this.name + ' ' + value;
-    // }
+    counter(value) { 
+      if (value > 50) { 
+        const that = this;
+        setTimeout(function() { 
+          that.counter = 0;
+        }, 2000);
+      }
+    }
   }, 
 
   computed: { 
