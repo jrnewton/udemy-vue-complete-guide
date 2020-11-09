@@ -4,21 +4,35 @@ const app = Vue.createApp({
   data() { 
     return {
       counter: 0,
-      name: ''
+      name: '',
+      lastName: '',
+      fullname: ''
     };
   },
   
-  computed: { 
-    fullname() { 
-      if (this.name === '') { 
-        return '';
-      }
-      else { 
-        return this.name + ' ' + 'Newton';
-      }
+  watch: { 
+    /* watcher must have same name as a data or computed property.
+       this function will be executed when the property changes */
+    name(value, oldValue) {
+      this.fullname = value + ' ' + this.lastName;
+    }, 
+
+    lastName(value, oldValue) {
+      this.fullname = this.name + ' ' + value;
     }
   }, 
-  
+
+  computed: { 
+    // fullname() { 
+    //   if (this.name === '') { 
+    //     return '';
+    //   }
+    //   else { 
+    //     return this.name + ' ' + 'Newton';
+    //   }
+    // }
+  }, 
+
   methods: { 
     add(num) { 
       this.counter += num;
