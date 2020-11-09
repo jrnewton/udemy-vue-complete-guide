@@ -18,18 +18,18 @@
     </header>
     <section id="events">
       <h2>Events in Action</h2>
-      <!-- call it like add() -->
-      <button @click="add()">Add</button>
-      <!-- or give it a reference like 'reduce'-->
-      <button @click="reduce">Reduce</button>
+      <button @click="add(5)">Add</button>
+      <!-- event modifier: right -->
+      <button @click="reduce(5)" @click.right="reduce(10)">Reduce</button>
       <p>Result: {{ counter }}</p>
-      <!-- JS will always provide an 'event' object to a listener: 
-      <input type="text" @input="setName"></input>
-       -->
-       <!-- you can also access the event via $event -->
-       <input type="text" @input="setName($event, '!!!')"></input>
-
-      <p>Your Name: {{ name }}</p>
+      <!-- event modified: enter -->
+      <input type="text" @input="setName($event, '!!!')" @keyup.enter="confirmName"></input>
+      <p>Your Name: {{ confirmedName }}</p>
+      <!-- event modifier: prevent -->
+      <form @submit.prevent="submitForm">
+        <input type="text">
+        <button>Sign Up</button>
+      </form>
     </section>
   </body>
 </html>
