@@ -23,6 +23,13 @@
       <!-- or give it a reference like 'reduce'-->
       <button @click="reduce">Reduce</button>
       <p>Result: {{ counter }}</p>
+      <!-- JS will always provide an 'event' object to a listener: 
+      <input type="text" @input="setName"></input>
+       -->
+       <!-- you can also access the event via $event -->
+       <input type="text" @input="setName($event, '!!!')"></input>
+
+      <p>Your Name: {{ name }}</p>
     </section>
   </body>
 </html>

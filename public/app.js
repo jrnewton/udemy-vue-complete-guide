@@ -3,7 +3,8 @@
 const app = Vue.createApp({
   data() { 
     return {
-      counter: 0
+      counter: 0,
+      name: ''
     };
   },
   
@@ -14,6 +15,10 @@ const app = Vue.createApp({
 
     reduce() { 
       this.counter--;
+    }, 
+
+    setName(event, decoration) { 
+      this.name = event.target.value/*vanilla JS*/ + decoration;
     }
   }
 });
