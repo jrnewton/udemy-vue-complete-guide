@@ -18,8 +18,10 @@
     </header>
     <section id="events">
       <h2>Events in Action</h2>
-      <button @click="counter++">Add</button>
-      <button @click="counter--">Remove</button>
+      <!-- call it like add() -->
+      <button @click="add()">Add</button>
+      <!-- or give it a reference like 'reduce'-->
+      <button @click="reduce">Reduce</button>
       <p>Result: {{ counter }}</p>
     </section>
   </body>
