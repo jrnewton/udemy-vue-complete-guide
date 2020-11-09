@@ -21,12 +21,12 @@
       <button @click="add(5)">Add</button>
       <!-- event modifier: right -->
       <button @click="reduce(5)" @click.right="reduce(10)">Reduce</button>
-      <!-- only evaluate dynamic data bindings once -->
-      <p v-once>Starting Counter: {{ counter }}</p>
       <p>Result: {{ counter }}</p>
-      <!-- event modified: enter -->
-      <input type="text" @input="setName($event, '!!!')" @keyup.enter="confirmName"></input>
-      <p>Your Name: {{ confirmedName }}</p>
+      
+      <input type="text" :value="name" @input="setName"></input>
+      <button @click="resetInput">Reset Input</button>
+
+      <p>Your Name: {{ name }}</p>
       <!-- event modifier: prevent -->
       <form @submit.prevent="submitForm">
         <input type="text">
