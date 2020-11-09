@@ -1,23 +1,12 @@
 {
   "name": "vue-playground",
   "version": "1.0.0",
-  "description": "Playing around with [Vue3](https://v3.vuejs.org/) while working through the Udemy course [Vue - The Complete Guide](https://www.udemy.com/course/vuejs-2-the-complete-guide).",
   "main": "server.js",
   "scripts": {
     "start": "nodemon",
-    "deploy": "aws s3 cp ./app s3://vue-playground-20201109 --recursive --exclude \"*\" --include \"app.js\" --include \"index.html\" --include \"styles.css\"",
+    "deploy": "aws s3 cp ./app s3://vue.3plb.com --recursive --exclude \"*\" --include \"app.js\" --include \"index.html\" --include \"styles.css\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jrnewton/vue-playground.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jrnewton/vue-playground/issues"
-  },
-  "homepage": "https://github.com/jrnewton/vue-playground#readme",
   "dependencies": {
     "express": "^4.17.1"
   }
