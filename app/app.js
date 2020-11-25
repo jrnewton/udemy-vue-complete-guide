@@ -12,6 +12,33 @@ const app = Vue.createApp({
     setText() {
       this.message = this.$refs.userText.value;
     }
+  },
+  beforeCreate() {
+    console.log('beforeCreate');
+  },
+  created() {
+    console.log('created');
+  },
+  beforeMount() {
+    //template is compiled at this point
+    console.log('beforeMount');
+  },
+  mounted() {
+    //content has been rendered by this point
+    console.log('mounted');
+  },
+  beforeUpdate() {
+    console.log('beforeUpdate');
+  },
+  updated() {
+    //updated content has been rendered at this point
+    console.log('updated');
+  },
+  beforeUnmount() {
+    console.log('beforeUnmount');
+  },
+  unmounted() {
+    console.log('unmounted');
   }
 });
 
