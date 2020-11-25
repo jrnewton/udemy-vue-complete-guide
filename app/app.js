@@ -1,56 +1,18 @@
-'use strict';
-
 const app = Vue.createApp({
   data() {
     return {
-      counter: 0,
-      name: '',
-      lastName: ''
+      currentUserInput: '',
+      message: 'Vue is great!',
     };
   },
-
-  watch: {
-    counter(value) {
-      if (value > 50) {
-        const that = this;
-        setTimeout(function () {
-          that.counter = 0;
-        }, 2000);
-      }
-    }
-  },
-
-  computed: {
-    fullname() {
-      return this.name + ' ' + this.lastName;
-    }
-  },
-
   methods: {
-    add(num) {
-      this.counter += num;
+    saveInput(event) {
+      this.currentUserInput = event.target.value;
     },
-
-    reduce(num) {
-      this.counter -= num;
+    setText() {
+      this.message = this.currentUserInput;
     },
-
-    submitForm() {
-      alert('Submitted!');
-    },
-
-    resetInput() {
-      this.name = '';
-    }
-  }
+  },
 });
 
-app.directive(
-  'visible',
-  /* shorthand for mounted and updated */
-  function (el, binding) {
-    el.style.visibility = binding.value ? 'visible' : 'hidden';
-  }
-);
-
-app.mount('#events');
+app.mount('#app');
