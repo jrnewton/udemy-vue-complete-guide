@@ -44,6 +44,10 @@ const app = Vue.createApp({
 
 app.mount('#app');
 
+setTimeout(function () {
+  app.unmount();
+}, 3000);
+
 const app2 = Vue.createApp({
   template: `
     <p>{{ favoriteMeal }}</p>
