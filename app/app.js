@@ -45,4 +45,12 @@ const app = Vue.createApp({
   }
 });
 
+app.directive(
+  'visible',
+  /* shorthand for mounted and updated */
+  function (el, binding) {
+    el.style.visibility = binding.value ? 'visible' : 'hidden';
+  }
+);
+
 app.mount('#events');
