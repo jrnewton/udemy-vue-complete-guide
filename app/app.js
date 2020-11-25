@@ -17,29 +17,12 @@ const app = Vue.createApp({
 
 app.mount('#app');
 
-// let message = 'hello';
-// let longMessage = message + ' World';
-// console.log(longMessage);
-// message = 'hello!!!!';
-// console.log(longMessage);
-
-const data = {
-  message: 'hello',
-  longMessage: 'hello! World!'
-};
-
-const proxy = new Proxy(data, {
-  set(target, key, value) {
-    if (key === 'message') {
-      target.longMessage = value + ' World!';
-      target.message = value;
-    }
-
-    // console.log(target);
-    // console.log(key);
-    // console.log(value);
+const app2 = Vue.createApp({
+  data() {
+    return {
+      favoriteMeal: 'pizza'
+    };
   }
 });
 
-proxy.message = 'hello!!!!';
-console.log(proxy.longMessage);
+app2.mount('#app2');
