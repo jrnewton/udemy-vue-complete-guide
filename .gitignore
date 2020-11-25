@@ -3,3 +3,4 @@ node_modules/
 *.zip
 basics-*
 behind-*
+cmp-*
