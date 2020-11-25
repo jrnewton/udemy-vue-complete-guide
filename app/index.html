@@ -21,7 +21,9 @@
       <button @click="add(5)">Add</button>
       <!-- event modifier: right -->
       <button @click="reduce(5)" @click.right="reduce(10)">Reduce</button>
-      <p :style="{ backgroundColor: counter > 50 ? 'red' : '#4fc08d' }">
+      <p
+        :style="[ 'color: white', { backgroundColor: counter > 50 ? 'red' : '#4fc08d' }]"
+      >
         Result: {{ counter }}
       </p>
       <!-- 
