@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No tests defined!\" && exit 1"
   },
-  "dependencies": {},
+  "license": "MIT",
   "devDependencies": {
-    "local-web-server": "^4.2.1"
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.0",
+    "local-web-server": "^4.2.1",
+    "prettier": "^2.2.1"
   }
 }
