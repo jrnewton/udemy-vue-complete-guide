@@ -14,17 +14,31 @@
   </head>
   <body>
     <header>
-      <h1>FriendList</h1>
+      <h1>Monster Slayer</h1>
     </header>
-    <section id="app">
-      <ul>
-        <friend-contact
-          v-for="friend in friends"
-          :key="friend.id"
-          :friend="friend"
-        >
-        </friend-contact>
-      </ul>
-    </section>
+    <div id="game">
+      <section id="monster" class="container">
+        <h2>Monster Health</h2>
+        <div class="healthbar">
+          <div class="healthbar__value"></div>
+        </div>
+      </section>
+      <section id="player" class="container">
+        <h2>Your Health</h2>
+        <div class="healthbar">
+          <div class="healthbar__value"></div>
+        </div>
+      </section>
+      <section id="controls">
+        <button>ATTACK</button>
+        <button>SPECIAL ATTACK</button>
+        <button>HEAL</button>
+        <button>SURRENDER</button>
+      </section>
+      <section id="log" class="container">
+        <h2>Battle Log</h2>
+        <ul></ul>
+      </section>
+    </div>
   </body>
 </html>
