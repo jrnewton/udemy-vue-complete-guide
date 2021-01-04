@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon",
-    "deploy": "aws s3 cp ./app s3://vue.3plb.com --recursive --exclude \"*\" --include \"app.js\" --include \"index.html\" --include \"styles.css\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "express": "^4.17.1"
+  "dependencies": {},
+  "devDependencies": {
+    "local-web-server": "^4.2.1"
   }
 }
