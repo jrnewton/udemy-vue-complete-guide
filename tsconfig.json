@@ -4,7 +4,6 @@
     "checkJs": true
   },
   "exclude": [
-    "node_modules",
-    ".eslintrc.js"
+    "node_modules"
   ]
 }

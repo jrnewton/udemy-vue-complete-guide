@@ -12,5 +12,35 @@
     "eslint-plugin-prettier": "^3.3.0",
     "local-web-server": "^4.2.1",
     "prettier": "^2.2.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "es2018": true,
+      "mocha": true,
+      "browser": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "prettier",
+      "plugin:vue/vue3-recommended"
+    ],
+    "plugins": [
+      "prettier",
+      "vue"
+    ],
+    "rules": {
+      "strict": "error",
+      "semi": "error",
+      "prettier/prettier": "error"
+    },
+    "ignorePatterns": [
+      "node_modules/",
+      "types/"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "none",
+    "quoteProps": "consistent"
   }
 }
