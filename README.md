@@ -1,5 +1,5 @@
-# Vue - The Complete Guide (w/ Router, Vuex, Composition API)
+# Monster Slayer Game
 
-Playing around with [Vue3](https://v3.vuejs.org/) while working through the Udemy course [Vue - The Complete Guide](https://www.udemy.com/course/vuejs-2-the-complete-guide).
+This game is from Section 4 of [Vue - The Complete Guide](https://www.udemy.com/course/vuejs-2-the-complete-guide).
 
-[Live Demo](https://udemy-vue3.netlify.app/) of this code hosted on [Netlify](https://www.netlify.com/).
+[Play Monster Slayer](https://5ffa1b479dba3d0008d882c1--udemy-vue3.netlify.app/)
