@@ -7,7 +7,8 @@ const app = Vue.createApp({
     return {
       playerHealth: 100,
       monsterHealth: 100,
-      currentRound: 0
+      currentRound: 0,
+      winner: null
     };
   },
   computed: {
@@ -20,25 +21,44 @@ const app = Vue.createApp({
       return { width: this.playerHealth + '%' };
     },
 
-    mayUseSpecialAttack() {
+    specialAttackDisabled() {
       return this.currentRound % 3 !== 0;
     }
   },
   methods: {
-    attackMonster() {
-      this.monsterHealth -= getRandomValue(5, 12);
-      this.attackPlayer();
-      this.currentRound++;
-    },
-
-    attackPlayer() {
+    completeRound() {
       this.playerHealth -= getRandomValue(8, 15);
+      this.currentRound++;
     },
 
-    specialAttackMonster() {
-      this.monsterHealth -= getRandomValue(10, 25);
-      this.attackPlayer();
-      this.currentRound++;
+    attackMonster(event, min = 5, max = 12) {
+      this.monsterHealth -= getRandomValue(min, max);
+      this.completeRound();
+    },
+
+    specialAttackMonster(event) {
+      this.attackMonster(10, 25);
+    },
+
+    healPlayer(event) {
+      this.playerHealth += getRandomValue(8, 20);
+      if (this.playerHealth > 100) {
+        this.playerHealth = 100;
+      }
+      this.completeRound();
+    }
+  },
+  watch: {
+    //I'm just watching player because playerAttack will always
+    //occur at end of each round.
+    playerHealth(value) {
+      if (value <= 0 && this.monsterHealth <= 0) {
+        this.winner = 'draw';
+      } else if (value <= 0) {
+        this.winner = 'monster';
+      } else if (this.monsterHealth <= 0) {
+        this.winner = 'player';
+      }
     }
   }
 });
