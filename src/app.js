@@ -19,6 +19,7 @@ const app = Vue.createApp({
   }
 });
 
+//always use a dash to avoid clash with builtin HTML elements.
 app.component('friend-contact', {
   props: ['friend'],
   template: `
