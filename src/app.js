@@ -14,11 +14,21 @@ const app = Vue.createApp({
   computed: {
     //make style bits computed properties to keep HTML +lean+
     monsterBarStyles() {
-      return { width: this.monsterHealth + '%' };
+      let width = this.monsterHealth;
+      if (width < 0) {
+        width = 0;
+      }
+
+      return { width: width + '%' };
     },
 
     playerBarStyles() {
-      return { width: this.playerHealth + '%' };
+      let width = this.playerHealth;
+      if (width < 0) {
+        width = 0;
+      }
+
+      return { width: width + '%' };
     },
 
     specialAttackDisabled() {
