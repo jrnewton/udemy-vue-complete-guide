@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "ws -d ./src/",
     "test": "echo \"No tests defined!\" && exit 1"
   },
   "license": "MIT",
