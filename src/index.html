@@ -36,7 +36,7 @@
         <h3 v-if="winner==='draw'">It's a draw</h3>
         <button @click="newGame">Start New Game</button>
       </section>
-      <section id="controls">
+      <section id="controls" v-else>
         <button @click="attackMonster">ATTACK</button>
         <button @click="specialAttackMonster" :disabled="specialAttackDisabled">
           SPECIAL ATTACK
