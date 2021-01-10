@@ -8,6 +8,7 @@
         :key="contact.id"
         v-bind="contact"
         @toggle-favorite="toggleFavorite"
+        @delete-contact="deleteContact"
       ></contact-detail>
     </ul>
   </section>
@@ -49,6 +50,9 @@ export default {
         email: email,
         isFavorite: false
       });
+    },
+    deleteContact(id) {
+      this.contacts = this.contacts.filter(x => x.id !== id);
     }
   }
 };

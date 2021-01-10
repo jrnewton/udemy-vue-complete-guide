@@ -1,7 +1,7 @@
 <template>
   <li>
     <h2>{{ name }} {{ isFavorite ? '(Favorite)' : '' }}</h2>
-    <button @click="toggleFavorite">
+    <button @click="$emit('toggle-favorite', id)">
       Toggle Favorite
     </button>
     <button @click="toggleDetails">
@@ -14,6 +14,7 @@
       <li><strong>Phone:</strong> {{ phone }}</li>
       <li><strong>Email:</strong> {{ email }}</li>
     </ul>
+    <button @click="$emit('delete-contact', id)">Delete</button>
   </li>
 </template>
 
@@ -54,6 +55,9 @@ export default {
         console.warn('id is missing from toggle-favorite event');
         return false;
       }
+    },
+    'delete-contact': function() {
+      return true;
     }
   },
   data() {
@@ -64,9 +68,6 @@ export default {
   methods: {
     toggleDetails() {
       this.detailsAreVisible = !this.detailsAreVisible;
-    },
-    toggleFavorite() {
-      this.$emit('toggle-favorite', this.id);
     }
   }
 };
