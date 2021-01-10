@@ -5,4 +5,5 @@
 # monster-slayer is not using Vue CLI
 [context.monster-slayer-game]
   publish = "./src"
-  command = ""
+  # this is a noop on this branch
+  command = "npm run build"
