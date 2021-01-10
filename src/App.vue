@@ -2,8 +2,11 @@
   <section>
     <header><h1>My Friends</h1></header>
     <ul>
-      <friend-contact></friend-contact>
-      <friend-contact></friend-contact>
+      <friend-contact
+        v-for="friend in friends"
+        :key="friend.id"
+        :friend="friend"
+      ></friend-contact>
     </ul>
   </section>
 </template>

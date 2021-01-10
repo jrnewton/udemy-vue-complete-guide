@@ -13,15 +13,12 @@
 
 <script>
 export default {
+  props: {
+    friend: Object
+  },
   data() {
     return {
-      detailsAreVisible: false,
-      friend: {
-        id: 1,
-        name: 'Manuel Lorenz',
-        phone: '01234 5678 991',
-        email: 'manuel@localhost.com'
-      }
+      detailsAreVisible: false
     };
   },
   methods: {
