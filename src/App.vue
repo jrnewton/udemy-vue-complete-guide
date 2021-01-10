@@ -42,6 +42,7 @@ export default {
       this.activeTopic = this.topics.find(topic => topic.id === topicId);
     }
   },
+  //test that changes to data will be seen by inject users in child components
   mounted() {
     setTimeout(() => {
       this.topics.push({
