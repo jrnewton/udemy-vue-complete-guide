@@ -8,6 +8,7 @@
         :name="friend.name"
         :email="friend.email"
         :phone="friend.phone"
+        :favorite="friend.isFavorite"
       ></friend-contact>
     </ul>
   </section>
@@ -29,7 +30,8 @@ export default {
           id: 'Julie',
           name: 'Julie Jones',
           phone: '987 452 9999',
-          email: 'julie@localhost.com'
+          email: 'julie@localhost.com',
+          isFavorite: false
         }
       ]
     };
