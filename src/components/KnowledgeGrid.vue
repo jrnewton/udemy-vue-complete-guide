@@ -6,7 +6,6 @@
       :id="topic.id"
       :topic-name="topic.title"
       :description="topic.description"
-      @select-topic="$emit('select-topic', $event)"
     ></knowledge-element>
   </ul>
 </template>
@@ -14,7 +13,6 @@
 <script>
 export default {
   //inject data from parent component (via a 'provide' attribute)
-  inject: ['topics'],
-  emits: ['select-topic']
+  inject: ['topics']
 };
 </script>
