@@ -13,7 +13,8 @@
 
 <script>
 export default {
-  props: ['topics'],
+  //inject data from parent component (via a 'provide' attribute)
+  inject: ['topics'],
   emits: ['select-topic']
 };
 </script>
