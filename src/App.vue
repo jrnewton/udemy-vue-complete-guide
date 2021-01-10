@@ -1,7 +1,7 @@
 <template>
   <section>
     <header><h1>My Friends</h1></header>
-    <new-friend @new-friend="newFriend"></new-friend>
+    <new-contact @add-contact="addContact"></new-contact>
     <ul>
       <friend-contact
         v-for="friend of friends"
@@ -41,7 +41,7 @@ export default {
       const f = this.friends.find(f => f.id === friendId);
       f.isFavorite = !f.isFavorite;
     },
-    newFriend(name, phone, email) {
+    addContact(name, phone, email) {
       this.friends.push({
         id: '' + Math.random(),
         name: name,
@@ -79,6 +79,32 @@ header {
   text-align: center;
   width: 90%;
   max-width: 40rem;
+}
+
+#app form {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  margin: 1rem auto;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  width: 90%;
+  max-width: 40rem;
+}
+
+#app input {
+  font: inherit;
+  padding: 0.15rem;
+}
+
+#app label {
+  font-weight: bold;
+  margin-right: 1rem;
+  width: 7rem;
+  display: inline-block;
+}
+
+#app form div {
+  margin: 1rem 0;
 }
 
 #app ul {
