@@ -1,11 +1,7 @@
-# Vue - The Complete Guide (w/ Router, Vuex, Composition API)
+# Knowledge App
 
-Playing around with [Vue3](https://v3.vuejs.org/) while working through the Udemy course [Vue - The Complete Guide](https://www.udemy.com/course/vuejs-2-the-complete-guide).
+This app is from Section 8 and provides an example of the provide/inject style of component communication.
 
-## Demos
+I did not code this app unlike all of the others.
 
-Section 4 - [Monster Slayer Game](https://monster-slayer-game--udemy-vue3.netlify.app/)
-
-Section 8 - [Contact App](https://contact-app--udemy-vue3.netlify.app/)
-
-Current content on main branch - https://udemy-vue3.netlify.app/
+[See the demo](https://knowledge-app--udemy-vue3.netlify.app/)
