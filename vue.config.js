@@ -1,7 +1,7 @@
 module.exports = {
   chainWebpack: config => {
     config.plugin('html').tap(args => {
-      args[0].title = 'My Contacts';
+      args[0].title = 'Knowledge App';
       return args;
     });
   }
