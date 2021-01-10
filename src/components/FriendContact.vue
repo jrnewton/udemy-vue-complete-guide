@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h2>{{ name }} {{ favorite ? '(Favorite)' : '' }}</h2>
+    <h2>{{ name }} {{ isFavorite ? '(Favorite)' : '' }}</h2>
     <button @click="toggleFavorite">
       Toggle Favorite
     </button>
@@ -37,10 +37,20 @@ export default {
         return value.indexOf('@') !== -1;
       }
     },
-    favorite: {
+    isFavorite: {
       type: Boolean,
       required: false,
       default: false
+    }
+  },
+  emits: {
+    'toggle-favorite': function(id) {
+      if (id) {
+        return true;
+      } else {
+        console.warn('id is missing from toggle-favorite event');
+        return false;
+      }
     }
   },
   data() {
