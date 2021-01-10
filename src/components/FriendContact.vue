@@ -1,6 +1,6 @@
 <template>
   <li>
-    <h2>{{ name }} {{ friendIsFavorite ? '(Favorite)' : '' }}</h2>
+    <h2>{{ name }} {{ favorite ? '(Favorite)' : '' }}</h2>
     <button @click="toggleFavorite">
       Toggle Favorite
     </button>
@@ -17,6 +17,10 @@
 <script>
 export default {
   props: {
+    id: {
+      type: String,
+      required: true
+    },
     name: {
       type: String,
       required: true
@@ -41,10 +45,7 @@ export default {
   },
   data() {
     return {
-      detailsAreVisible: false,
-      //Vue enforces uni-directional data flow from parent (App.vue) to child (Component.vue).
-      //One way to mutate a prop is to keep a local copy in data
-      friendIsFavorite: this.favorite
+      detailsAreVisible: false
     };
   },
   methods: {
@@ -52,7 +53,7 @@ export default {
       this.detailsAreVisible = !this.detailsAreVisible;
     },
     toggleFavorite() {
-      this.friendIsFavorite = !this.friendIsFavorite;
+      this.$emit('toggle-favorite', this.id);
     }
   }
 };
