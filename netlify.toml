@@ -1,0 +1,9 @@
+# global defaults
+[build]
+  publish = "./dist"
+  command = "npm run build"
+# monster-slayer is not using Vue CLI
+[context.monster-slayer-game]
+  publish = "./src"
+  # this is a noop on that branch
+  command = "npm run build"
