@@ -17,8 +17,7 @@
 <script>
 export default {
   props: {
-    friend: Object,
-    isFavorite: Boolean
+    friend: Object
   },
   data() {
     return {
