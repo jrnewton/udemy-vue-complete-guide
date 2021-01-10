@@ -1,6 +1,7 @@
 <template>
   <section>
     <header><h1>My Friends</h1></header>
+    <new-friend @new-friend="newFriend"></new-friend>
     <ul>
       <friend-contact
         v-for="friend of friends"
@@ -18,14 +19,14 @@ export default {
     return {
       friends: [
         {
-          id: 'Manual',
+          id: '' + Math.random(),
           name: 'Manual Lorenz',
           phone: '01234 56544 449',
           email: 'manuel@localhost.com',
           isFavorite: true
         },
         {
-          id: 'Julie',
+          id: '' + Math.random(),
           name: 'Julie Jones',
           phone: '987 452 9999',
           email: 'julie@localhost.com',
@@ -39,6 +40,15 @@ export default {
       console.log('toggleFavorite', friendId);
       const f = this.friends.find(f => f.id === friendId);
       f.isFavorite = !f.isFavorite;
+    },
+    newFriend(name, phone, email) {
+      this.friends.push({
+        id: '' + Math.random(),
+        name: name,
+        phone: phone,
+        email: email,
+        isFavorite: false
+      });
     }
   }
 };
