@@ -3,7 +3,7 @@
     <header><h1>My Friends</h1></header>
     <ul>
       <friend-contact
-        v-for="friend in friends"
+        v-for="friend of friends"
         :key="friend.id"
         :friend="friend"
       ></friend-contact>
@@ -20,7 +20,8 @@ export default {
           id: 'Manual',
           name: 'Manual Lorenz',
           phone: '01234 56544 449',
-          email: 'manuel@localhost.com'
+          email: 'manuel@localhost.com',
+          isFavorite: true
         },
         {
           id: 'Julie',
