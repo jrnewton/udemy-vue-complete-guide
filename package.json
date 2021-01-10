@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ws -d ./src/",
-    "build": "echo \"noop build - this is a static website\"",
+    "build": "mkdir dist && cp ./src/* ./dist/",
     "test": "echo \"No tests defined!\" && exit 1"
   },
   "license": "MIT",
