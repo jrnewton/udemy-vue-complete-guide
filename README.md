@@ -1,29 +1,5 @@
-# vue-first-app
+# Contact App
 
-## Project setup
+This is a simple contacts app from Section 8 of [Vue - The Complete Guide](https://www.udemy.com/course/vuejs-2-the-complete-guide).
 
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-
-```
-npm run build
-```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Check out the [Contact App](https://contact-app--udemy-vue3.netlify.app/).
