@@ -5,7 +5,9 @@
       <friend-contact
         v-for="friend of friends"
         :key="friend.id"
-        :friend="friend"
+        :name="friend.name"
+        :email="friend.email"
+        :phone="friend.phone"
       ></friend-contact>
     </ul>
   </section>
@@ -26,8 +28,8 @@ export default {
         {
           id: 'Julie',
           name: 'Julie Jones',
-          phone: '01234 56544 449',
-          email: 'manuel@localhost.com'
+          phone: '987 452 9999',
+          email: 'julie@localhost.com'
         }
       ]
     };
