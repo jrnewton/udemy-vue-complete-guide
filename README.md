@@ -1,29 +1,11 @@
-# vue-first-app
+# Vue - The Complete Guide (w/ Router, Vuex, Composition API)
 
-## Project setup
+Playing around with [Vue3](https://v3.vuejs.org/) while working through the Udemy course [Vue - The Complete Guide](https://www.udemy.com/course/vuejs-2-the-complete-guide).
 
-```
-npm install
-```
+## Demos
 
-### Compiles and hot-reloads for development
+Section 4 - [Monster Slayer Game](https://monster-slayer-game--udemy-vue3.netlify.app/)
 
-```
-npm run serve
-```
+Section 8 - [Contact App](https://contact-app--udemy-vue3.netlify.app/)
 
-### Compiles and minifies for production
-
-```
-npm run build
-```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Current content on main branch - https://udemy-vue3.netlify.app/
