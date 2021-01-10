@@ -8,7 +8,9 @@
       {{ detailsAreVisible ? 'Hide' : 'Show' }} Details
     </button>
     <ul v-if="detailsAreVisible">
+      <!-- Just for  testing  
       <li>Id: {{ id }}</li>
+      -->
       <li><strong>Phone:</strong> {{ phone }}</li>
       <li><strong>Email:</strong> {{ email }}</li>
     </ul>

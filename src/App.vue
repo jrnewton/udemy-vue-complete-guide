@@ -1,14 +1,14 @@
 <template>
   <section>
-    <header><h1>My Friends</h1></header>
+    <header><h1>My Contacts</h1></header>
     <new-contact @add-contact="addContact"></new-contact>
     <ul>
-      <friend-contact
-        v-for="friend of friends"
-        :key="friend.id"
-        v-bind="friend"
+      <contact-detail
+        v-for="contact of contacts"
+        :key="contact.id"
+        v-bind="contact"
         @toggle-favorite="toggleFavorite"
-      ></friend-contact>
+      ></contact-detail>
     </ul>
   </section>
 </template>
@@ -17,7 +17,7 @@
 export default {
   data() {
     return {
-      friends: [
+      contacts: [
         {
           id: '' + Math.random(),
           name: 'Manual Lorenz',
@@ -36,13 +36,13 @@ export default {
     };
   },
   methods: {
-    toggleFavorite(friendId) {
-      console.log('toggleFavorite', friendId);
-      const f = this.friends.find(f => f.id === friendId);
-      f.isFavorite = !f.isFavorite;
+    toggleFavorite(contactId) {
+      console.log('toggleFavorite', contactId);
+      const contact = this.contacts.find(c => c.id === contactId);
+      contact.isFavorite = !contact.isFavorite;
     },
     addContact(name, phone, email) {
-      this.friends.push({
+      this.contacts.push({
         id: '' + Math.random(),
         name: name,
         phone: phone,
