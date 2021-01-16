@@ -5,6 +5,9 @@
 </template>
 
 <style>
+/* this will be applied to all elements in the app
+   not just in this component.  Change <div> in UserInfo 
+   to <header> to see the results. */
 header {
   width: 100%;
   height: 5rem;
