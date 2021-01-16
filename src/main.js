@@ -8,6 +8,8 @@ import UserInfo from './components/UserInfo.vue';
 
 const app = createApp(App);
 
+//these are global components avaible for use anywhere in
+//the App and in any of it's children
 app.component('the-header', TheHeader);
 app.component('base-badge', BaseBadge);
 app.component('badge-list', BadgeList);
