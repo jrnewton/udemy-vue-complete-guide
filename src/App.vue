@@ -3,9 +3,23 @@
     <the-header></the-header>
     <button @click="set('active-goals')">Active Goals</button>
     <button @click="set('managed-goals')">Managed Goals</button>
-    <!-- component is defined by Vue. 
-      it will swap itself out based on the value of the :is express -->
-    <component :is="cmp"></component>
+
+    <!-- 'keep-alive' is defined by Vue. 
+      wrap this around components to keep their DOM 
+      structures alive in between activity.
+    
+      NOTE: you can only have a single child component inside keep-alive
+      that includes HTML comments.
+
+      VueCompilerError: <KeepAlive> expects exactly one child component.
+    -->
+    <!-- 'component' is defined by Vue. 
+        it will swap itself out based on the value 
+        of the :is express 
+    -->
+    <keep-alive>
+      <component :is="cmp"></component>
+    </keep-alive>
   </div>
 </template>
 
