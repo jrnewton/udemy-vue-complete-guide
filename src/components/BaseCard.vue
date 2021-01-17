@@ -1,6 +1,8 @@
 <template>
   <div>
-    <header>
+    <!-- only render the parent tag of the slot 
+    if we have slot content -->
+    <header v-if="$slots.header">
       <slot name="header">
         <!-- this is default content 
             if slot is not populated by 
@@ -15,7 +17,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  mounted() {
+    console.log('header slot: ', this.$slots.header);
+  }
+};
 </script>
 
 <style scoped>
