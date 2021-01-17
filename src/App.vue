@@ -7,6 +7,14 @@
       :info-text="activeUser.description"
       :role="activeUser.role"
     ></user-info>
+    <course-goals>
+      <!-- value of our slot name attribute is a variable name 
+          that will hold all slot bindings -->
+      <template #default="props">
+        <h2>{{ props.index }} @ {{ props.item }}</h2>
+        <h4>{{ props.randomText }}</h4>
+      </template>
+    </course-goals>
   </div>
 </template>
 
@@ -14,6 +22,7 @@
 import TheHeader from './components/TheHeader.vue';
 import BadgeList from './components/BadgeList.vue';
 import UserInfo from './components/UserInfo.vue';
+import CourseGoals from './components/CourseGoals.vue';
 
 export default {
   //these components are local to this vue object
@@ -31,7 +40,8 @@ export default {
     'the-header': TheHeader,
     //prettier-ignore
     BadgeList: BadgeList,
-    UserInfo
+    UserInfo,
+    CourseGoals
   },
   data() {
     return {
