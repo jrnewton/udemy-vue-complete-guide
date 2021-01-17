@@ -1,16 +1,13 @@
 <template>
-  <ul>
-    <resource-item v-for="r of storedResources" :key="r.id" v-bind="r">
-    </resource-item>
-  </ul>
+  <ResourceList :resources="storedResources" />
 </template>
 
 <script>
-import ResourceItem from './components/resources/ResourceItem.vue';
+import ResourceList from './components/resources/ResourceList.vue';
 
 export default {
   components: {
-    ResourceItem
+    ResourceList
   },
   data() {
     return {
