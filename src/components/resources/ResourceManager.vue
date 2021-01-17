@@ -1,5 +1,5 @@
 <template>
-  <base-card :is="selectedTab">
+  <base-card>
     <base-button @click="setSelectedTab('resource-list')"
       >Stored Resources</base-button
     >
