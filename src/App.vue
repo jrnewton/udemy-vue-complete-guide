@@ -1,34 +1,16 @@
 <template>
   <AppHeader :title="'Learning Resources'" />
-  <ResourceList :resources="storedResources" />
+  <ResourceManager />
 </template>
 
 <script>
 import AppHeader from './components/layouts/AppHeader.vue';
-import ResourceList from './components/resources/ResourceList.vue';
+import ResourceManager from './components/resources/ResourceManager.vue';
 
 export default {
   components: {
     AppHeader,
-    ResourceList
-  },
-  data() {
-    return {
-      storedResources: [
-        {
-          id: Math.random() + '',
-          title: 'Official Guide',
-          description: 'The official VueJs documentation',
-          url: 'https://vuejs.org'
-        },
-        {
-          id: Math.random() + '',
-          title: 'Google',
-          description: 'Learn to google...',
-          url: 'https://google.com'
-        }
-      ]
-    };
+    ResourceManager
   }
 };
 </script>

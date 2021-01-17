@@ -1,5 +1,4 @@
 <template>
-  <!-- <a href="{{ r.url }}" :title="r.description">{{ r.title }}</a> -->
   <li>
     <base-card>
       <header>
