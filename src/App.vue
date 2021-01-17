@@ -7,13 +7,12 @@
       :info-text="activeUser.description"
       :role="activeUser.role"
     ></user-info>
-    <course-goals>
-      <!-- value of our slot name attribute is a variable name 
+
+    <!-- value of our slot name attribute is a variable name 
           that will hold all slot bindings -->
-      <template #default="props">
-        <h2>{{ props.index }} @ {{ props.item }}</h2>
-        <h4>{{ props.randomText }}</h4>
-      </template>
+    <course-goals #default="props">
+      <h2>{{ props.index }} @ {{ props.item }}</h2>
+      <h4>{{ props.randomText }}</h4>
     </course-goals>
   </div>
 </template>
