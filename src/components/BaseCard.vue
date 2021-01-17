@@ -1,7 +1,12 @@
 <template>
   <div>
     <header>
-      <slot name="header"></slot>
+      <slot name="header">
+        <!-- this is default content 
+            if slot is not populated by 
+            component -->
+        <h2>The Default</h2>
+      </slot>
     </header>
     <!-- you can have 1 unamed slot
     which becomes the default slot -->
