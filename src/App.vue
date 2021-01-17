@@ -1,13 +1,17 @@
 <template>
   <ul>
-    <li v-for="r of storedResources" :key="r.id">
-      <a href="{{ r.url }}" :title="r.description">{{ r.title }}</a>
-    </li>
+    <resource-item v-for="r of storedResources" :key="r.id" v-bind="r">
+    </resource-item>
   </ul>
 </template>
 
 <script>
+import ResourceItem from './components/resources/ResourceItem.vue';
+
 export default {
+  components: {
+    ResourceItem
+  },
   data() {
     return {
       storedResources: [
