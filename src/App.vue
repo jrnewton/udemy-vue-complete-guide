@@ -1,28 +1,18 @@
 <template>
   <div>
     <the-header></the-header>
-    <badge-list></badge-list>
-    <user-info
-      :full-name="activeUser.name"
-      :info-text="activeUser.description"
-      :role="activeUser.role"
-    ></user-info>
-
-    <!-- value of our slot name attribute is a variable name 
-          that will hold all slot bindings -->
-    <course-goals #default="props">
-      <h2>{{ props.index }} @ {{ props.item }}</h2>
-      <h4>{{ props.randomText }}</h4>
-    </course-goals>
+    <button @click="set('active-goals')">Active Goals</button>
+    <button @click="set('managed-goals')">Managed Goals</button>
+    <!-- component is defined by Vue. 
+      it will swap itself out based on the value of the :is express -->
+    <component :is="cmp"></component>
   </div>
 </template>
 
 <script>
 import TheHeader from './components/TheHeader.vue';
-import BadgeList from './components/BadgeList.vue';
-import UserInfo from './components/UserInfo.vue';
-import CourseGoals from './components/CourseGoals.vue';
-
+import ActiveGoals from './components/ActivateGoals.vue';
+import ManagedGoals from './components/ManagedGoals.vue';
 export default {
   //these components are local to this vue object
   components: {
@@ -38,9 +28,8 @@ export default {
     //#3 uses modern JS syntax to expand TheHeader -> TheHeader: TheHeader
     'the-header': TheHeader,
     //prettier-ignore
-    BadgeList: BadgeList,
-    UserInfo,
-    CourseGoals
+    ActiveGoals:ActiveGoals,
+    ManagedGoals
   },
   data() {
     return {
@@ -48,8 +37,14 @@ export default {
         name: 'Maximilian Schwarzmüller',
         description: 'Site owner and admin',
         role: 'admin'
-      }
+      },
+      cmp: 'active-goals'
     };
+  },
+  methods: {
+    set(cmp) {
+      this.cmp = cmp;
+    }
   }
 };
 </script>
