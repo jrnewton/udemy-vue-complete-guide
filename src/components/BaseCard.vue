@@ -1,5 +1,10 @@
 <template>
   <div>
+    <header>
+      <slot name="header"></slot>
+    </header>
+    <!-- you can have 1 unamed slot
+    which becomes the default slot -->
     <slot></slot>
   </div>
 </template>

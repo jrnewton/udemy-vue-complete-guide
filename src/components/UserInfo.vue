@@ -1,9 +1,10 @@
 <template>
   <base-card>
-    <header>
+    <template v-slot:header>
       <h3>{{ fullName }}</h3>
       <base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
-    </header>
+    </template>
+    <!-- this content goes to the default (unamed) slot in the component -->
     <p>{{ infoText }}</p>
   </base-card>
 </template>
