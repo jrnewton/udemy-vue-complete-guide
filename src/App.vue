@@ -1,12 +1,15 @@
 <template>
+  <AppHeader :title="'Learning Resources'" />
   <ResourceList :resources="storedResources" />
 </template>
 
 <script>
+import AppHeader from './components/layouts/AppHeader.vue';
 import ResourceList from './components/resources/ResourceList.vue';
 
 export default {
   components: {
+    AppHeader,
     ResourceList
   },
   data() {
