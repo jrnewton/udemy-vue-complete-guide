@@ -1,6 +1,6 @@
 <template>
   <teleport to="#error">
-    <div></div>
+    <div @click="overlayClose"></div>
     <dialog open>
       <header>
         <slot name="header">
@@ -12,7 +12,10 @@
         <slot></slot>
       </section>
       <menu>
-        <slot name="actions"> </slot>
+        <slot name="actions">
+          <!-- default content -->
+          <base-button @click="$emit('close')">Okay</base-button>
+        </slot>
       </menu>
     </dialog>
   </teleport>
@@ -21,9 +24,21 @@
 <script>
 export default {
   props: {
+    allowOverlayClose: {
+      type: Boolean,
+      required: false
+    },
     title: {
       type: String,
       required: false
+    }
+  },
+  emits: ['close'],
+  methods: {
+    overlayClose() {
+      if (this.allowOverlayClose) {
+        this.$emit('close');
+      }
     }
   }
 };

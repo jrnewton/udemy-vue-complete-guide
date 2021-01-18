@@ -1,5 +1,10 @@
 <template>
-  <base-dialog v-if="invalidData" title="Invalid Input">
+  <base-dialog
+    v-if="invalidData"
+    title="Invalid Input"
+    @close="okayDialog"
+    :allowOverlayClose="false"
+  >
     <template #default>
       <p>Unfortunatly the following input values are invalid:</p>
       <ul>
@@ -7,9 +12,6 @@
           <i>{{ error.msg }}</i> for <u>{{ error.field }}</u>
         </li>
       </ul>
-    </template>
-    <template #actions>
-      <base-button @click="okayDialog">Okay</base-button>
     </template>
   </base-dialog>
   <base-card>
