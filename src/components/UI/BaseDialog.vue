@@ -14,7 +14,9 @@
       <menu>
         <slot name="actions">
           <!-- default content -->
-          <base-button @click="$emit('close')">Okay</base-button>
+          <base-button v-if="!allowOverlayClose" @click="$emit('close')"
+            >Okay</base-button
+          >
         </slot>
       </menu>
     </dialog>
