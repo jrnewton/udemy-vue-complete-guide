@@ -8,4 +8,6 @@ Section 4 - [Monster Slayer Game](https://monster-slayer-game--udemy-vue3.netlif
 
 Section 8 - [Contact App](https://contact-app--udemy-vue3.netlify.app/)
 
+Section 10 - [Remember Me](https://remember-me--udemy-vue3.netlify.app/) (aka Learning Resources app)
+
 Current content on main branch - https://udemy-vue3.netlify.app/
