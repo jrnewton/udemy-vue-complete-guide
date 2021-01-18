@@ -51,7 +51,8 @@ export default {
   provide() {
     return {
       resources: this.storedResources,
-      addResource: this.addResource
+      addResource: this.addResource,
+      deleteResource: this.deleteResource
     };
   },
   methods: {
@@ -68,6 +69,14 @@ export default {
       //insert at beginning of array
       this.storedResources.unshift(newResource);
       this.selectedTab = 'resource-list';
+    },
+    deleteResource(id) {
+      //NOTE: using filter will not work because it requires
+      //that you overwrite the object reference, thus breaking
+      //the reactive model.
+      const index = this.storedResources.findIndex(r => r.id === id);
+      this.storedResources.splice(index, 1);
+      console.log('resource count', this.storedResources.length);
     }
   }
 };
