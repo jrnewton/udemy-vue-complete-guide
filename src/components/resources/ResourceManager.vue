@@ -48,12 +48,24 @@ export default {
   },
   provide() {
     return {
-      resources: this.storedResources
+      resources: this.storedResources,
+      addResource: this.addResource
     };
   },
   methods: {
     setSelectedTab(tab) {
       this.selectedTab = tab;
+    },
+    addResource(title, description, url) {
+      const newResource = {
+        id: Math.random() + '',
+        title: title,
+        description: description,
+        url: url
+      };
+      //insert at beginning of array
+      this.storedResources.unshift(newResource);
+      this.selectedTab = 'resource-list';
     }
   }
 };
