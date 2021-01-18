@@ -1,33 +1,28 @@
 <template>
-  <AppHeader :title="'Learning Resources'" />
-  <ResourceManager />
+  <the-form></the-form>
 </template>
 
 <script>
-import AppHeader from './components/layouts/AppHeader.vue';
-import ResourceManager from './components/resources/ResourceManager.vue';
+import TheForm from './components/TheForm.vue';
 
 export default {
   components: {
-    AppHeader,
-    ResourceManager
-  }
-};
+    TheForm
+  }  
+}
 </script>
 
-<!-- global -->
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: sans-serif;
 }
 
 body {
   margin: 0;
+  background-color: #292929;
 }
 </style>
