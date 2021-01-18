@@ -1,4 +1,17 @@
 <template>
+  <base-dialog v-if="invalidData" title="Invalid Input">
+    <template #default>
+      <p>Unfortunatly the following input values are invalid:</p>
+      <ul>
+        <li v-for="error in errors" :key="error.field">
+          <i>{{ error.msg }}</i> for <u>{{ error.field }}</u>
+        </li>
+      </ul>
+    </template>
+    <template #actions>
+      <base-button @click="okayDialog">Okay</base-button>
+    </template>
+  </base-dialog>
   <base-card>
     <form @submit.prevent="submitForm">
       <div class="form-control">
@@ -26,16 +39,51 @@
 </template>
 
 <script>
+const validateFormData = (title, desc, url) => {
+  const errors = [];
+  if (title.trim() === '') {
+    errors.push({ field: 'title', msg: 'value required' });
+  }
+
+  if (desc.trim() === '') {
+    errors.push({ field: 'description', msg: 'value required' });
+  }
+
+  if (url.trim() === '') {
+    errors.push({ field: 'url', msg: 'value required' });
+  }
+
+  return errors;
+};
+
 export default {
   inject: ['addResource'],
+  data() {
+    return {
+      invalidData: false,
+      errors: []
+    };
+  },
   methods: {
     submitForm() {
+      this.invalidData = false;
+
       const title = this.$refs.titleInput.value;
       const description = this.$refs.descriptionInput.value;
       const url = this.$refs.urlInput.value;
 
+      const errors = validateFormData(title, description, url);
+      if (errors.length) {
+        this.invalidData = true;
+        this.errors = errors;
+        return;
+      }
+
       console.log('add resource', title);
       this.addResource(title, description, url);
+    },
+    okayDialog() {
+      this.invalidData = false;
     }
   }
 };
