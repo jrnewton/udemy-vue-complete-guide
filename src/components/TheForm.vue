@@ -1,12 +1,12 @@
 <template>
-  <form>
+  <form @submit.prevent="submitForm">
     <div class="form-control">
       <label for="user-name">Your Name</label>
-      <input id="user-name" name="user-name" type="text" />
+      <input id="user-name" name="user-name" type="text" v-model="username" />
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
-      <input id="age" name="age" type="number" />
+      <input id="age" name="age" type="number" v-model.number="age" />
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
@@ -52,6 +52,28 @@
   </form>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      username: '',
+      age: null
+    };
+  },
+  methods: {
+    submitForm() {
+      console.log('submitForm', this.username, this.age);
+      //you MUST use 'v-model.number' in the template
+      //to ensure auto-type conversion occurs, contrary to
+      //what Max says in the video.  Vue3 does not look at
+      //type attribute of the element.
+      console.log('age is', typeof this.age);
+      this.username = '';
+      this.age = null;
+    }
+  }
+};
+</script>
 <style scoped>
 form {
   margin: 2rem auto;
