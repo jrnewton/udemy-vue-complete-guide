@@ -1,8 +1,15 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control">
+    <div class="form-control" :class="{ invalid: usernameInvalid }">
       <label for="user-name">Your Name</label>
-      <input id="user-name" name="user-name" type="text" v-model="username" />
+      <input
+        @blur="validateUsername"
+        id="user-name"
+        name="user-name"
+        type="text"
+        v-model.trim="username"
+      />
+      <p v-if="usernameInvalid">Please enter a valid username</p>
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
@@ -109,10 +116,15 @@ export default {
       referrer: defaultReferrer,
       interest: defaultInterest,
       how: defaultHow,
-      confirm: false
+      confirm: false,
+      usernameInvalid: false
     };
   },
   methods: {
+    validateUsername() {
+      this.usernameInvalid = this.username === '';
+    },
+
     submitForm() {
       console.log(
         'submitForm',
@@ -152,6 +164,14 @@ form {
 
 .form-control {
   margin: 0.5rem 0;
+}
+
+.form-control.invalid input {
+  border-color: red;
+}
+
+.form-control.invalid label {
+  color: red;
 }
 
 label {
