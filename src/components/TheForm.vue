@@ -10,7 +10,7 @@
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
-      <select id="referrer" name="referrer">
+      <select id="referrer" name="referrer" v-model="referrer">
         <option value="google">Google</option>
         <option value="wom">Word of mouth</option>
         <option value="newspaper">Newspaper</option>
@@ -53,23 +53,28 @@
 </template>
 
 <script>
+const defaultReferrer = 'wom';
 export default {
   data() {
     return {
       username: '',
-      age: null
+      age: null,
+      referrer: defaultReferrer
     };
   },
   methods: {
     submitForm() {
-      console.log('submitForm', this.username, this.age);
+      console.log('submitForm', this.username, this.age, this.referrer);
+
       //you MUST use 'v-model.number' in the template
       //to ensure auto-type conversion occurs, contrary to
       //what Max says in the video.  Vue3 does not look at
       //type attribute of the element.
       console.log('age is', typeof this.age);
+
       this.username = '';
       this.age = null;
+      this.referrer = defaultReferrer;
     }
   }
 };
