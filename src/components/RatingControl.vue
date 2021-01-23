@@ -22,16 +22,29 @@
 
 <script>
 export default {
-  data() {
-    return {
-      activeOption: null
-    };
+  /* The prop and event come from using v-model on this component */
+  props: ['modelValue'],
+  emits: ['update:modelValue'],
+  //syncing prop value this way will not allow value to be updated
+  //after component is created.  Instead use computed property.
+  // data() {
+  //   return {
+  //     /* initial our local value with the prop value coming from v-model */
+  //     activeOption: this.modelValue
+  //   };
+  // },
+  computed: {
+    activeOption() {
+      return this.modelValue;
+    }
   },
   methods: {
     selectOption(opt) {
-      this.activeOption = opt;
+      /* sync our local variable to the parent component through v-model event */
+      this.$emit('update:modelValue', opt);
     },
     isActive(opt) {
+      //this is now a computed prop reference
       return this.activeOption === opt;
     }
   }

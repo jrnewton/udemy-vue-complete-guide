@@ -90,7 +90,8 @@
       </div>
     </div>
     <div class="form-control">
-      <rating-control></rating-control>
+      <!-- remember: v-model is shorthand for binding @input event and :value attribute -->
+      <rating-control v-model="rating"></rating-control>
     </div>
     <div class="form-control">
       <input
@@ -125,7 +126,8 @@ export default {
       interest: defaultInterest,
       how: defaultHow,
       confirm: false,
-      usernameInvalid: false
+      usernameInvalid: false,
+      rating: null
     };
   },
   methods: {
@@ -141,7 +143,8 @@ export default {
         this.referrer,
         this.interest,
         this.how,
-        this.confirm
+        this.confirm,
+        this.rating
       );
 
       //you MUST use 'v-model.number' in the template
@@ -156,6 +159,7 @@ export default {
       this.interest = defaultInterest;
       this.how = defaultHow;
       this.confirm = false;
+      this.rating = null;
     }
   }
 };
