@@ -1,6 +1,6 @@
 <template>
-  <learning-survey @survey-submit="storeSurvey"></learning-survey>
-  <user-experiences :results="savedSurveyResults"></user-experiences>
+  <learning-survey></learning-survey>
+  <user-experiences></user-experiences>
 </template>
 
 <script>
@@ -12,21 +12,27 @@ export default {
     LearningSurvey,
     UserExperiences
   },
+  //savedSurveyResults is not needed because
+  //data will be managed by firebase
   data() {
     return {
-      savedSurveyResults: []
+      //savedSurveyResults: []
     };
   },
   methods: {
-    storeSurvey(surveyData) {
-      const surveyResult = {
-        name: surveyData.userName,
-        rating: surveyData.rating,
-        id: new Date().toISOString()
-      };
-      this.savedSurveyResults.push(surveyResult);
-      console.log(surveyResult);
-    }
+    // storeSurvey(surveyData) {
+    //   const surveyResult = {
+    //     name: surveyData.userName,
+    //     rating: surveyData.rating,
+    //     id: new Date().toISOString()
+    //   };
+    //   this.savedSurveyResults.push(surveyResult);
+    //   console.log(surveyResult);
+    // }
+  },
+  provide: {
+    firebaseEndpoint:
+      'https://udemy-vue-survey-default-rtdb.firebaseio.com/surveys.json'
   }
 };
 </script>

@@ -3,7 +3,7 @@
     <base-card>
       <h2>Submitted Experiences</h2>
       <div>
-        <base-button>Load Submitted Experiences</base-button>
+        <base-button @click="load">Load Submitted Experiences</base-button>
       </div>
       <ul>
         <survey-result
@@ -21,9 +21,38 @@
 import SurveyResult from './SurveyResult.vue';
 
 export default {
-  props: ['results'],
   components: {
     SurveyResult
+  },
+  inject: ['firebaseEndpoint'],
+  data() {
+    return {
+      results: []
+    };
+  },
+  methods: {
+    async load() {
+      console.log('loading data...');
+      try {
+        const response = await fetch(this.firebaseEndpoint);
+        if (response.ok) {
+          const jsonResult = await response.json();
+          console.log('loading done', jsonResult);
+          this.results.splice(0);
+          for (const id in jsonResult) {
+            this.results.push({
+              id: id,
+              name: jsonResult[id].name,
+              rating: jsonResult[id].rating
+            });
+          }
+        } else {
+          console.log('response not ok', response.status);
+        }
+      } catch (error) {
+        console.log('caught error', error.data);
+      }
+    }
   }
 };
 </script>
