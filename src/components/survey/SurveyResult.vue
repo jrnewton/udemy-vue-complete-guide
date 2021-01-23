@@ -2,7 +2,8 @@
   <li>
     <p>
       <span class="highlight">{{ name }}</span> rated the learning experience
-      <span :class="ratingClass">{{ rating }}</span>.
+      <span :class="ratingClass">{{ rating }}</span
+      >.
     </p>
   </li>
 </template>
@@ -13,8 +14,8 @@ export default {
   computed: {
     ratingClass() {
       return 'highlight rating--' + this.rating;
-    },
-  },
+    }
+  }
 };
 </script>
 
