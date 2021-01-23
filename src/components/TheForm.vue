@@ -90,6 +90,7 @@
       </div>
     </div>
     <div class="form-control">
+      <h2>How would you rate us?</h2>
       <!-- remember: v-model is shorthand for binding @input event and :value attribute -->
       <rating-control v-model="rating"></rating-control>
     </div>
