@@ -6,6 +6,7 @@
         <base-button @click="load">Load Submitted Experiences</base-button>
       </div>
       <p v-if="isLoading">Loading...</p>
+      <p v-else-if="errorExists">An error occured: {{ errorText }}</p>
       <ul v-else-if="dataExists">
         <survey-result
           v-for="result in results"
@@ -14,6 +15,9 @@
           :rating="result.rating"
         ></survey-result>
       </ul>
+      <p v-else>
+        No stored experiences found. Start adding some survey results first.
+      </p>
     </base-card>
   </section>
 </template>
@@ -30,12 +34,17 @@ export default {
     return {
       results: [],
       isLoading: false,
-      dataExists: false
+      dataExists: false,
+      errorExists: false,
+      errorText: null
     };
   },
   methods: {
     async load() {
       this.isLoading = true;
+      this.dataExists = false;
+      this.errorExists = false;
+      this.errorText = null;
       try {
         const response = await fetch(this.firebaseEndpoint);
         if (response.ok) {
@@ -52,10 +61,14 @@ export default {
           }
           this.dataExists = this.results.length > 0;
         } else {
+          this.errorExists = true;
+          this.errorText = response.status;
           console.log('response not ok', response.status);
         }
       } catch (error) {
-        console.log('caught error', JSON.stringify(error));
+        this.errorExists = true;
+        this.errorText = error + '';
+        console.log('caught error', error);
       } finally {
         this.isLoading = false;
       }
