@@ -6,7 +6,10 @@
         <base-button @click="load">Load Submitted Experiences</base-button>
       </div>
       <p v-if="isLoading">Loading...</p>
-      <p v-else-if="errorExists">An error occured: {{ errorText }}</p>
+      <p v-else-if="errorExists">
+        An error occured.
+        {{ errorText }}
+      </p>
       <ul v-else-if="dataExists">
         <survey-result
           v-for="result in results"
@@ -61,14 +64,14 @@ export default {
           }
           this.dataExists = this.results.length > 0;
         } else {
+          console.log('[load] response not ok', response.status);
           this.errorExists = true;
           this.errorText = response.status;
-          console.log('response not ok', response.status);
         }
       } catch (error) {
+        console.log('[load] caught error', error);
         this.errorExists = true;
         this.errorText = error + '';
-        console.log('caught error', error);
       } finally {
         this.isLoading = false;
       }
