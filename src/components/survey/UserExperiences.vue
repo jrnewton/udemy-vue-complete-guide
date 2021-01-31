@@ -5,7 +5,8 @@
       <div>
         <base-button @click="load">Load Submitted Experiences</base-button>
       </div>
-      <ul>
+      <p v-if="isLoading">Loading...</p>
+      <ul v-else-if="dataExists">
         <survey-result
           v-for="result in results"
           :key="result.id"
@@ -27,32 +28,41 @@ export default {
   inject: ['firebaseEndpoint'],
   data() {
     return {
-      results: []
+      results: [],
+      isLoading: false,
+      dataExists: false
     };
   },
   methods: {
     async load() {
-      console.log('loading data...');
+      this.isLoading = true;
       try {
         const response = await fetch(this.firebaseEndpoint);
         if (response.ok) {
-          const jsonResult = await response.json();
-          console.log('loading done', jsonResult);
           this.results.splice(0);
-          for (const id in jsonResult) {
-            this.results.push({
-              id: id,
-              name: jsonResult[id].name,
-              rating: jsonResult[id].rating
-            });
+          const jsonResult = await response.json();
+          if (jsonResult) {
+            for (const id in jsonResult) {
+              this.results.push({
+                id: id,
+                name: jsonResult[id].name,
+                rating: jsonResult[id].rating
+              });
+            }
           }
+          this.dataExists = this.results.length > 0;
         } else {
           console.log('response not ok', response.status);
         }
       } catch (error) {
-        console.log('caught error', error.data);
+        console.log('caught error', JSON.stringify(error));
+      } finally {
+        this.isLoading = false;
       }
     }
+  },
+  mounted() {
+    this.load();
   }
 };
 </script>
