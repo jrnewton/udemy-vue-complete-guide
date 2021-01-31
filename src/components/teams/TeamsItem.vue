@@ -2,7 +2,7 @@
   <li>
     <h3>{{ name }}</h3>
     <div class="team-members">{{ memberCount }} Members</div>
-    <a href="#" @click.prevent="$router.push(`/teams/${id}`)">View Members</a>
+    <router-link :to="`/teams/${id}`">View Members</router-link>
   </li>
 </template>
 
