@@ -3,7 +3,7 @@
     <base-card>
       <h2>Submitted Experiences</h2>
       <div>
-        <base-button @click="load">Load Submitted Experiences</base-button>
+        <base-button @click="loadData">Load Submitted Experiences</base-button>
       </div>
       <p v-if="isLoading">Loading...</p>
       <p v-else-if="errorExists">
@@ -14,8 +14,10 @@
         <survey-result
           v-for="result in results"
           :key="result.id"
+          :id="result.id"
           :name="result.name"
           :rating="result.rating"
+          :deleteEntry="deleteEntry"
         ></survey-result>
       </ul>
       <p v-else>
@@ -43,7 +45,23 @@ export default {
     };
   },
   methods: {
-    async load() {
+    async deleteEntry(id) {
+      console.log('delete clicked for', id);
+      try {
+        const kludgedURL = this.firebaseEndpoint.replace(
+          '.json',
+          `/${id}.json`
+        );
+        console.log('delete', kludgedURL);
+        const response = await fetch(kludgedURL, {
+          method: 'DELETE'
+        });
+        console.log('delete response', response);
+      } catch (error) {
+        console.log('[deleteEntry] caught error', error);
+      }
+    },
+    async loadData() {
       this.isLoading = true;
       this.dataExists = false;
       this.errorExists = false;
@@ -78,7 +96,7 @@ export default {
     }
   },
   mounted() {
-    this.load();
+    this.loadData();
   }
 };
 </script>

@@ -19,4 +19,14 @@ button:active {
   background-color: #5c0556;
   border-color: #5c0556;
 }
+
+.flat {
+  background-color: transparent;
+  color: #3a0061;
+  border: none;
+}
+.flat:hover,
+.flat:active {
+  background-color: #edd2ff;
+}
 </style>

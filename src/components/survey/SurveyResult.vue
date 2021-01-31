@@ -4,13 +4,14 @@
       <span class="highlight">{{ name }}</span> rated the learning experience
       <span :class="ratingClass">{{ rating }}</span
       >.
+      <base-button class="flat" @click="deleteEntry(id)">Delete</base-button>
     </p>
   </li>
 </template>
 
 <script>
 export default {
-  props: ['name', 'rating'],
+  props: ['id', 'name', 'rating', 'deleteEntry'],
   computed: {
     ratingClass() {
       return 'highlight rating--' + this.rating;
