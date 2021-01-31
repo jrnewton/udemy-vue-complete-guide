@@ -45,6 +45,10 @@
           <base-button>Submit</base-button>
         </div>
       </form>
+      <p v-if="errorExists">
+        An error occured.
+        {{ errorText }}
+      </p>
     </base-card>
   </section>
 </template>
@@ -55,29 +59,50 @@ export default {
     return {
       enteredName: '',
       chosenRating: null,
-      invalidInput: false
+      invalidInput: false,
+      errorExists: false,
+      errorText: null
     };
   },
   inject: ['firebaseEndpoint'],
   //emits: ['survey-submit'],
   methods: {
-    submitSurvey() {
+    async submitSurvey() {
       if (this.enteredName === '' || !this.chosenRating) {
         this.invalidInput = true;
         return;
       }
-      this.invalidInput = false;
 
-      fetch(this.firebaseEndpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: this.enteredName,
-          rating: this.chosenRating
-        })
-      });
+      this.invalidInput = false;
+      this.errorExists = false;
+      this.errorText = null;
+
+      try {
+        const response = await fetch(this.firebaseEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: this.enteredName,
+            rating: this.chosenRating
+          })
+        });
+
+        if (!response.ok) {
+          console.log('[submitSurvey] response not ok', response.status);
+          this.errorExists = true;
+          this.errorText =
+            'Status: ' +
+            response.status +
+            ', description: ' +
+            response.statusText;
+        }
+      } catch (error) {
+        console.log('[submitSurvey] caught an error', error);
+        this.errorExists = true;
+        this.errorText = error + '';
+      }
 
       // this.$emit('survey-submit', {
       //   userName: this.enteredName,
