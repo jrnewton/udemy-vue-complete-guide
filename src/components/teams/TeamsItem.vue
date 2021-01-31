@@ -2,13 +2,13 @@
   <li>
     <h3>{{ name }}</h3>
     <div class="team-members">{{ memberCount }} Members</div>
-    <a href="#">View Members</a>
+    <a href="#" @click.prevent="$router.push(`/teams/${id}`)">View Members</a>
   </li>
 </template>
 
 <script>
 export default {
-  props: ['name', 'memberCount']
+  props: ['id', 'name', 'memberCount']
 };
 </script>
 
