@@ -18,13 +18,15 @@ const router = createRouter({
     },
     {
       path: '/teams',
-      component: TeamsList
-    },
-    {
-      path: '/teams/:teamId',
-      component: TeamMembers,
-      //pass dynamic path elements to component via props
-      props: true
+      component: TeamsList,
+      children: [
+        {
+          path: ':teamId',
+          component: TeamMembers,
+          //pass dynamic path elements to component via props
+          props: true
+        }
+      ]
     },
     {
       path: '/users',
