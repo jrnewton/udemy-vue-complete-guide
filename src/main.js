@@ -11,23 +11,14 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     //order matters! first wins
-
-    //setup default route
-    //option 1 - define the route. URL does not represent the content though.
-    // {
-    //   path: '/',
-    //   component: TeamsList
-    // },
-    //option 2 - use redirect so that URL matches page content.
     {
       path: '/',
+      //see also alias
       redirect: '/teams'
     },
     {
       path: '/teams',
       component: TeamsList
-      //option 3 - use alias similiar to option 1. URL is not changed.
-      //alias: '/'
     },
     {
       path: '/teams/:teamId',
