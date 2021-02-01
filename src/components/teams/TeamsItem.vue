@@ -15,7 +15,8 @@ export default {
         //reference a named route
         //avoids hardcoding URL specifics
         name: 'team-members',
-        params: { teamId: this.id }
+        params: { teamId: this.id },
+        query: { sort: 'dsc' }
       };
     }
   }

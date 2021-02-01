@@ -43,8 +43,25 @@ export default {
         selectedMembers.push(selectedUser);
       }
 
+      const sort = this.$route.query.sort;
+      this.members = selectedMembers.sort((left, right) => {
+        let diff = 0;
+        if (left.fullName < right.fullName) {
+          diff = -1;
+        } else if (left.fullName > right.fullName) {
+          diff = 1;
+        } else {
+          diff = 0;
+        }
+
+        if (sort === 'dsc') {
+          diff = -1 * diff;
+        }
+
+        return diff;
+      });
+
       this.teamName = selectedTeam.name;
-      this.members = selectedMembers;
     }
   },
   watch: {
