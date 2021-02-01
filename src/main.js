@@ -12,15 +12,18 @@ const router = createRouter({
   routes: [
     //order matters! first wins
     {
+      name: 'root',
       path: '/',
       //see also alias
       redirect: '/teams'
     },
     {
+      name: 'teams',
       path: '/teams',
       component: TeamsList,
       children: [
         {
+          name: 'team-members',
           path: ':teamId',
           component: TeamMembers,
           //pass dynamic path elements to component via props
@@ -29,10 +32,12 @@ const router = createRouter({
       ]
     },
     {
+      name: 'users',
       path: '/users',
       component: UsersList
     },
     {
+      name: 'not-found',
       //pass regex to variable
       path: '/:notFound(.*)',
       component: NotFound
