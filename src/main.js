@@ -5,6 +5,7 @@ import App from './App.vue';
 import TeamsList from './components/teams/TeamsList.vue';
 import TeamMembers from './components/teams/TeamMembers.vue';
 import UsersList from './components/users/UsersList.vue';
+import NotFound from './components/nav/NotFound.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -37,6 +38,11 @@ const router = createRouter({
     {
       path: '/users',
       component: UsersList
+    },
+    {
+      //pass regex to variable
+      path: '/:notFound(.*)',
+      component: NotFound
     }
   ]
 });
