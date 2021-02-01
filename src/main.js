@@ -16,7 +16,9 @@ const router = createRouter({
     },
     {
       path: '/teams/:teamId',
-      component: TeamMembers
+      component: TeamMembers,
+      //pass dynamic path elements to component via props
+      props: true
     },
     {
       path: '/users',
