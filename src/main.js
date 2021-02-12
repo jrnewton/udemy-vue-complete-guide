@@ -53,11 +53,11 @@ const router = createRouter({
     }
   ],
   linkActiveClass: 'active',
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior(_to, _from, savedPosition) {
     //to and from are router objects.
     //same as this.$route inside a component
-    console.log('to', to);
-    console.log('from', from);
+    // console.log('to', _to);
+    // console.log('from', _from);
 
     //position when user navigated forward
     console.log('pos', savedPosition);
@@ -74,6 +74,27 @@ const router = createRouter({
       };
     }
   }
+});
+
+router.beforeEach((to, from, next) => {
+  console.log('navigating from ', from.name, 'to', to.name);
+  // next(); //continue as-is
+  // next(false); //cancel navigation
+  // next(true); //continue as-is
+  // next('/error'); //redirect to URL
+
+  //silly example to always direct to team 2
+  // if (to.name === 'team-members') {
+  //   next();
+  // } else {
+  //   //redirect to route object
+  //   next({
+  //     name: 'team-members',
+  //     params: { teamId: 't2' }
+  //   });
+  // }
+
+  next();
 });
 
 const app = createApp(App);
