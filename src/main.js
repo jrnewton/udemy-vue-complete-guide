@@ -42,6 +42,11 @@ const router = createRouter({
       components: {
         default: UsersList,
         footer: UsersFooter
+      },
+      //2. Route guard: route specific - called second
+      beforeEnter(to, from, next) {
+        console.log('Route guard / route / beforeEnter');
+        next();
       }
     },
     {
@@ -53,7 +58,7 @@ const router = createRouter({
     }
   ],
   linkActiveClass: 'active',
-  scrollBehavior(_to, _from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     //to and from are router objects.
     //same as this.$route inside a component
     // console.log('to', _to);
@@ -76,8 +81,9 @@ const router = createRouter({
   }
 });
 
+//1. Route guard: Global - called first.
 router.beforeEach((to, from, next) => {
-  console.log('navigating from ', from.name, 'to', to.name);
+  console.log('Route guard / global / beforeEach');
   // next(); //continue as-is
   // next(false); //cancel navigation
   // next(true); //continue as-is
