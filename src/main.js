@@ -8,6 +8,7 @@ import TeamsFooter from './components/teams/TeamsFooter.vue';
 import UsersList from './components/users/UsersList.vue';
 import UsersFooter from './components/users/UsersFooter.vue';
 import NotFound from './components/nav/NotFound.vue';
+import Auth from './components/nav/Auth.vue';
 
 const router = createRouter({
   history: createWebHistory(),
@@ -32,7 +33,10 @@ const router = createRouter({
           path: ':teamId',
           component: TeamMembers,
           //pass dynamic path elements to component via props
-          props: true
+          props: true,
+          meta: {
+            needsAuth: true
+          }
         }
       ]
     },
@@ -48,6 +52,11 @@ const router = createRouter({
         //console.log('Route guard / route / beforeEnter');
         next();
       }
+    },
+    {
+      name: 'auth',
+      path: '/auth',
+      component: Auth
     },
     {
       name: 'not-found',
@@ -83,7 +92,18 @@ const router = createRouter({
 
 //1. Route guard: Global - called first.
 router.beforeEach((to, from, next) => {
-  //console.log('Route guard / global / beforeEach');
+  console.log('Route guard / global / beforeEach');
+
+  if (to.meta.needsAuth) {
+    next({
+      name: 'auth',
+      query: {
+        fromRoute: from.name
+      }
+    });
+  } else {
+    next();
+  }
 
   // next(); //continue as-is
   // next(false); //cancel navigation
@@ -100,8 +120,6 @@ router.beforeEach((to, from, next) => {
   //     params: { teamId: 't2' }
   //   });
   // }
-
-  next();
 });
 
 router.afterEach((to, from) => {
