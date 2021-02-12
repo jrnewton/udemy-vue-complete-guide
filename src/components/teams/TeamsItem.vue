@@ -16,7 +16,7 @@ export default {
         //avoids hardcoding URL specifics
         name: 'team-members',
         params: { teamId: this.id },
-        query: { sort: 'dsc' }
+        query: { sort: 'asc' }
       };
     }
   }
