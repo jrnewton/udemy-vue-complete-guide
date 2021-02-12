@@ -51,7 +51,29 @@ const router = createRouter({
       // this will go to default unamed router view in App.vue
       component: NotFound
     }
-  ]
+  ],
+  linkActiveClass: 'active',
+  scrollBehavior(to, from, savedPosition) {
+    //to and from are router objects.
+    //same as this.$route inside a component
+    console.log('to', to);
+    console.log('from', from);
+
+    //position when user navigated forward
+    console.log('pos', savedPosition);
+
+    //savedPosition will be null when navigating forward
+    //and it will have some value when navigating backward.
+    //Use that to properly set the scroll view.
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return {
+        left: 0,
+        top: 0
+      };
+    }
+  }
 });
 
 const app = createApp(App);
