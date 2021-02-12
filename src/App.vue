@@ -1,8 +1,13 @@
 <template>
   <the-navigation></the-navigation>
   <main>
+    <!-- this is the 'default' router view -->
     <router-view></router-view>
   </main>
+  <footer>
+    <!-- this is a named router view  -->
+    <router-view name="footer"></router-view>
+  </footer>
 </template>
 
 <script>

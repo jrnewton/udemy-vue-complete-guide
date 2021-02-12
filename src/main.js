@@ -4,7 +4,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import TeamsList from './components/teams/TeamsList.vue';
 import TeamMembers from './components/teams/TeamMembers.vue';
+import TeamsFooter from './components/teams/TeamsFooter.vue';
 import UsersList from './components/users/UsersList.vue';
+import UsersFooter from './components/users/UsersFooter.vue';
 import NotFound from './components/nav/NotFound.vue';
 
 const router = createRouter({
@@ -20,7 +22,10 @@ const router = createRouter({
     {
       name: 'teams',
       path: '/teams',
-      component: TeamsList,
+      components: {
+        default: TeamsList,
+        footer: TeamsFooter
+      },
       children: [
         {
           name: 'team-members',
@@ -34,12 +39,16 @@ const router = createRouter({
     {
       name: 'users',
       path: '/users',
-      component: UsersList
+      components: {
+        default: UsersList,
+        footer: UsersFooter
+      }
     },
     {
       name: 'not-found',
       //pass regex to variable
       path: '/:notFound(.*)',
+      // this will go to default unamed router view in App.vue
       component: NotFound
     }
   ]
