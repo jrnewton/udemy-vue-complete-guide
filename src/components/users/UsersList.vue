@@ -9,12 +9,6 @@
       :role="user.role"
     ></user-item>
   </ul>
-  <teleport to="#error">
-    <dialog open v-if="displayWarning">
-      <h3>Please don't leave!</h3>
-      Changes not saved
-    </dialog>
-  </teleport>
 </template>
 
 <script>
@@ -23,8 +17,7 @@ import UserItem from './UserItem.vue';
 export default {
   data() {
     return {
-      changesSaved: false,
-      displayWarning: false
+      changesSaved: false
     };
   },
   components: {
@@ -41,14 +34,8 @@ export default {
     if (this.changesSaved) {
       next();
     } else {
-      //cancel navigation
-      next(false);
-      //display warning to user
-      this.displayWarning = true;
-      //close warning after 5s
-      setTimeout(() => {
-        this.displayWarning = false;
-      }, 5000);
+      const leave = confirm('You have unsaved changes - leave anyways?');
+      next(leave);
     }
   },
   unmounted() {
