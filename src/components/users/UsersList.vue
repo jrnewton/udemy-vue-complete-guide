@@ -19,7 +19,7 @@ export default {
   inject: ['users'],
   //3. Router guard: component - called third.
   beforeRouteEnter(to, from, next) {
-    console.log('Route guard / component / beforeRouteEnter');
+    //('Route guard / component / beforeRouteEnter');
     next();
   }
 };

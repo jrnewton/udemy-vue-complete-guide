@@ -45,7 +45,7 @@ const router = createRouter({
       },
       //2. Route guard: route specific - called second
       beforeEnter(to, from, next) {
-        console.log('Route guard / route / beforeEnter');
+        //console.log('Route guard / route / beforeEnter');
         next();
       }
     },
@@ -65,7 +65,7 @@ const router = createRouter({
     // console.log('from', _from);
 
     //position when user navigated forward
-    console.log('pos', savedPosition);
+    //console.log('pos', savedPosition);
 
     //savedPosition will be null when navigating forward
     //and it will have some value when navigating backward.
@@ -83,7 +83,8 @@ const router = createRouter({
 
 //1. Route guard: Global - called first.
 router.beforeEach((to, from, next) => {
-  console.log('Route guard / global / beforeEach');
+  //console.log('Route guard / global / beforeEach');
+
   // next(); //continue as-is
   // next(false); //cancel navigation
   // next(true); //continue as-is

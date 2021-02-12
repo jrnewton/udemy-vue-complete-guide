@@ -31,6 +31,10 @@ export default {
   created() {
     this.populateTeamData(this.teamId);
   },
+  beforeRouteUpdate(to, from, next) {
+    console.log('beforeRouteUpdate');
+    next();
+  },
   methods: {
     populateTeamData(teamId) {
       const selectedTeam = this.teams.find(team => {
@@ -66,7 +70,7 @@ export default {
   },
   watch: {
     teamId(newId) {
-      console.log('teamId updated', newId);
+      //console.log('teamId updated', newId);
       this.populateTeamData(newId);
     }
   }
