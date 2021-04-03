@@ -2,7 +2,7 @@
   <base-container title="Vuex">
     <counter></counter>
     <favorite-value></favorite-value>
-    <button @click="increment">Add 5 after 2 seconds</button>
+    <button @click="increment">Add 10 after 2 seconds</button>
     <change-counter></change-counter>
   </base-container>
 </template>
@@ -35,8 +35,8 @@ export default {
       // });
 
       this.$store.dispatch({
-        type: 'increase',
-        value: 5
+        type: 'delayedIncrease',
+        value: 10
       });
     }
   }

@@ -13,7 +13,7 @@ const store = createStore({
     increment(context) {
       context.commit('increment');
     },
-    increase(context, payload) {
+    delayedIncrease(context, payload) {
       setTimeout(() => {
         //commit a mutation
         context.commit('increase', payload);
@@ -33,11 +33,11 @@ const store = createStore({
     }
   },
   getters: {
-    finalCount(state) {
-      return state.count * 2;
+    count(state) {
+      return state.count;
     },
     normalizedCounter(_, getters) {
-      const val = getters.finalCount;
+      const val = getters.count;
       if (val < 0) {
         return 0;
       } else if (val > 100) {
