@@ -9,8 +9,22 @@ const store = createStore({
       count: 0
     };
   },
+  actions: {
+    increment(context) {
+      context.commit('increment');
+    },
+    increase(context, payload) {
+      setTimeout(() => {
+        //commit a mutation
+        context.commit('increase', payload);
+      }, 2000);
+    }
+  },
   //mutations are clearly defined methods which have the logic to update the state
   mutations: {
+    //mutations must be synchronous!
+    //Put actions between components and mutations to
+    //ensure you never accidently put async code in a mutation
     increment(state) {
       state.count++;
     },

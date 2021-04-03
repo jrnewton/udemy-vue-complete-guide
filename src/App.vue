@@ -2,7 +2,7 @@
   <base-container title="Vuex">
     <counter></counter>
     <favorite-value></favorite-value>
-    <button @click="increment">Add 5</button>
+    <button @click="increment">Add 5 after 2 seconds</button>
     <change-counter></change-counter>
   </base-container>
 </template>
@@ -29,7 +29,12 @@ export default {
     increment() {
       //takes a single object that contains name of mutation (type)
       //and the remaining elements are sent as data argument.
-      this.$store.commit({
+      // this.$store.commit({
+      //   type: 'increase',
+      //   value: 5
+      // });
+
+      this.$store.dispatch({
         type: 'increase',
         value: 5
       });
