@@ -7,8 +7,8 @@ import BaseContainer from './components/BaseContainer.vue';
 
 export default {
   components: {
-    BaseContainer,
-  },
+    BaseContainer
+  }
 };
 </script>
 
