@@ -6,8 +6,8 @@
 export default {
   methods: {
     increment() {
-      //takes name of mutation to perform
-      this.$store.commit('increase', 2);
+      //takes name of mutation to perform plus a data object
+      this.$store.commit('increase', { value: 2 });
     }
   }
 };

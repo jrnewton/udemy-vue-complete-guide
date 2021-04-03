@@ -24,8 +24,12 @@ export default {
   },
   methods: {
     increment() {
-      //takes name of mutation to perform
-      this.$store.commit('increase', 5);
+      //takes a single object that contains name of mutation (type)
+      //and the remaining elements are sent as data argument.
+      this.$store.commit({
+        type: 'increase',
+        value: 5
+      });
     }
   }
 };
