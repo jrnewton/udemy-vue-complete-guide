@@ -17,6 +17,21 @@ const store = createStore({
     increase(state, payload) {
       state.count += payload.value;
     }
+  },
+  getters: {
+    finalCount(state) {
+      return state.count * 2;
+    },
+    normalizedCounter(_, getters) {
+      const val = getters.finalCount;
+      if (val < 0) {
+        return 0;
+      } else if (val > 100) {
+        return 100;
+      } else {
+        return val;
+      }
+    }
   }
 });
 
