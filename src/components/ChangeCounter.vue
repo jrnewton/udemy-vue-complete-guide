@@ -6,7 +6,8 @@
 export default {
   methods: {
     increment() {
-      this.$store.state.count++;
+      //takes name of mutation to perform
+      this.$store.commit('increment');
     }
   }
 };

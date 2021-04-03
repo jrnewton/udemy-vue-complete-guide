@@ -24,7 +24,8 @@ export default {
   },
   methods: {
     increment() {
-      this.$store.state.count += 11;
+      //takes name of mutation to perform
+      this.$store.commit('increment');
     }
   }
 };
