@@ -1,9 +1,12 @@
 <template>
-  <base-container title="Vuex">
+  <base-container title="Vuex" v-if="loggedIn">
     <counter></counter>
     <favorite-value></favorite-value>
     <button @click="increment">Add 10 after 2 seconds</button>
     <change-counter></change-counter>
+  </base-container>
+  <base-container title="Auth">
+    <user-auth></user-auth>
   </base-container>
 </template>
 
@@ -12,18 +15,22 @@ import BaseContainer from './components/BaseContainer.vue';
 import Counter from './components/Counter.vue';
 import ChangeCounter from './components/ChangeCounter.vue';
 import FavoriteValue from './components/FavoriteValue.vue';
+import UserAuth from './components/UserAuth.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   components: {
     BaseContainer,
     Counter,
     ChangeCounter,
-    FavoriteValue
+    FavoriteValue,
+    UserAuth
   },
   computed: {
     count() {
       return this.$store.state.count;
-    }
+    },
+    ...mapGetters(['loggedIn'])
   },
   methods: {
     increment() {

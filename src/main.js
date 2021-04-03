@@ -6,10 +6,17 @@ import { createStore } from 'vuex';
 const store = createStore({
   state() {
     return {
-      count: 0
+      count: 0,
+      loggedIn: false
     };
   },
   actions: {
+    login(context) {
+      context.commit('setAuth', true);
+    },
+    logout(context) {
+      context.commit('setAuth', false);
+    },
     increment(context) {
       context.commit('increment');
     },
@@ -22,6 +29,9 @@ const store = createStore({
   },
   //mutations are clearly defined methods which have the logic to update the state
   mutations: {
+    setAuth(state, value) {
+      state.loggedIn = value;
+    },
     //mutations must be synchronous!
     //Put actions between components and mutations to
     //ensure you never accidently put async code in a mutation
@@ -33,6 +43,9 @@ const store = createStore({
     }
   },
   getters: {
+    loggedIn(state) {
+      return state.loggedIn;
+    },
     count(state) {
       return state.count;
     },
