@@ -1,44 +1,14 @@
 <template>
-  <the-navigation></the-navigation>
-  <main>
-    <!-- this is the 'default' router view -->
-    <router-view></router-view>
-  </main>
-  <footer>
-    <!-- this is a named router view  -->
-    <router-view name="footer"></router-view>
-  </footer>
+  <base-container title="Vuex"></base-container>
 </template>
 
 <script>
-import TheNavigation from './components/nav/TheNavigation.vue';
+import BaseContainer from './components/BaseContainer.vue';
 
 export default {
   components: {
-    TheNavigation
+    BaseContainer,
   },
-  data() {
-    return {
-      teams: [
-        { id: 't1', name: 'Frontend Engineers', members: ['u1', 'u2'] },
-        { id: 't2', name: 'Backend Engineers', members: ['u1', 'u2', 'u3'] },
-        { id: 't3', name: 'Client Consulting', members: ['u4', 'u5'] }
-      ],
-      users: [
-        { id: 'u1', fullName: 'Max Schwarz', role: 'Engineer' },
-        { id: 'u2', fullName: 'Praveen Kumar', role: 'Engineer' },
-        { id: 'u3', fullName: 'Julie Jones', role: 'Engineer' },
-        { id: 'u4', fullName: 'Alex Blackfield', role: 'Consultant' },
-        { id: 'u5', fullName: 'Marie Smith', role: 'Consultant' }
-      ]
-    };
-  },
-  provide() {
-    return {
-      teams: this.teams,
-      users: this.users
-    };
-  }
 };
 </script>
 
