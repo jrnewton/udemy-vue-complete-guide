@@ -1,65 +1,73 @@
 <template>
-  <base-container title="Vuex" v-if="loggedIn">
-    <counter></counter>
-    <favorite-value></favorite-value>
-    <button @click="increment">Add 10 after 2 seconds</button>
-    <change-counter></change-counter>
-  </base-container>
-  <base-container title="Auth">
-    <user-auth></user-auth>
-  </base-container>
+  <the-header></the-header>
+  <router-view v-slot="slotProps">
+    <transition name="route" mode="out-in">
+      <component :is="slotProps.Component"></component>
+    </transition>
+  </router-view>
 </template>
 
 <script>
-import BaseContainer from './components/BaseContainer.vue';
-import Counter from './components/Counter.vue';
-import ChangeCounter from './components/ChangeCounter.vue';
-import FavoriteValue from './components/FavoriteValue.vue';
-import UserAuth from './components/UserAuth.vue';
-import { mapGetters } from 'vuex';
+import TheHeader from './components/layout/TheHeader.vue';
 
 export default {
   components: {
-    BaseContainer,
-    Counter,
-    ChangeCounter,
-    FavoriteValue,
-    UserAuth
+    TheHeader
   },
   computed: {
-    count() {
-      return this.$store.state.count;
-    },
-    ...mapGetters(['loggedIn'])
+    didAutoLogout() {
+      return this.$store.getters.didAutoLogout;
+    }
   },
-  methods: {
-    increment() {
-      //takes a single object that contains name of mutation (type)
-      //and the remaining elements are sent as data argument.
-      // this.$store.commit({
-      //   type: 'increase',
-      //   value: 5
-      // });
-
-      this.$store.dispatch({
-        type: 'delayedIncrease',
-        value: 10
-      });
+  created() {
+    this.$store.dispatch('tryLogin');
+  },
+  watch: {
+    didAutoLogout(curValue, oldValue) {
+      if (curValue && curValue !== oldValue) {
+        this.$router.replace('/coaches');
+      }
     }
   }
-};
+}
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
   margin: 0;
+}
+
+.route-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.route-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.route-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.route-leave-active {
+  transition: all 0.3s ease-in;
+}
+
+.route-enter-to,
+.route-leave-from {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
