@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="submitForm">
-    <div class="form-control" :class="{invalid: !firstName.isValid}">
+    <div class="form-control" :class="{ invalid: !firstName.isValid }">
       <label for="firstname">Firstname</label>
       <input
         type="text"
@@ -10,7 +10,7 @@
       />
       <p v-if="!firstName.isValid">Firstname must not be empty.</p>
     </div>
-    <div class="form-control" :class="{invalid: !lastName.isValid}">
+    <div class="form-control" :class="{ invalid: !lastName.isValid }">
       <label for="lastname">Lastname</label>
       <input
         type="text"
@@ -20,7 +20,7 @@
       />
       <p v-if="!lastName.isValid">Lastname must not be empty.</p>
     </div>
-    <div class="form-control" :class="{invalid: !description.isValid}">
+    <div class="form-control" :class="{ invalid: !description.isValid }">
       <label for="description">Description</label>
       <textarea
         id="description"
@@ -30,12 +30,17 @@
       ></textarea>
       <p v-if="!description.isValid">Description must not be empty.</p>
     </div>
-    <div class="form-control" :class="{invalid: !rate.isValid}">
+    <div class="form-control" :class="{ invalid: !rate.isValid }">
       <label for="rate">Hourly Rate</label>
-      <input type="number" id="rate" v-model.number="rate.val" @blur="clearValidity('rate')" />
+      <input
+        type="number"
+        id="rate"
+        v-model.number="rate.val"
+        @blur="clearValidity('rate')"
+      />
       <p v-if="!rate.isValid">Rate must be greater than 0.</p>
     </div>
-    <div class="form-control" :class="{invalid: !areas.isValid}">
+    <div class="form-control" :class="{ invalid: !areas.isValid }">
       <h3>Areas of Expertise</h3>
       <div>
         <input
@@ -81,25 +86,25 @@ export default {
     return {
       firstName: {
         val: '',
-        isValid: true,
+        isValid: true
       },
       lastName: {
         val: '',
-        isValid: true,
+        isValid: true
       },
       description: {
         val: '',
-        isValid: true,
+        isValid: true
       },
       rate: {
         val: null,
-        isValid: true,
+        isValid: true
       },
       areas: {
         val: [],
-        isValid: true,
+        isValid: true
       },
-      formIsValid: true,
+      formIsValid: true
     };
   },
   methods: {
@@ -141,12 +146,12 @@ export default {
         last: this.lastName.val,
         desc: this.description.val,
         rate: this.rate.val,
-        areas: this.areas.val,
+        areas: this.areas.val
       };
 
       this.$emit('save-data', formData);
-    },
-  },
+    }
+  }
 };
 </script>
 

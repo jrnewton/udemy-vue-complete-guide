@@ -12,7 +12,7 @@ import CoachForm from '../../components/coaches/CoachForm.vue';
 
 export default {
   components: {
-    CoachForm,
+    CoachForm
   },
   methods: {
     saveData(data) {
