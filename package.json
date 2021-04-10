@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "kill": "pgrep -f \"vue-cli-service\" | xargs kill",
-    "pretty-all": "npx prettier --write ./src/**/*.vue ./src/**/*.js"
+    "pretty-all": "npx prettier --write \"./src/**/*.{vue,js}\""
   },
   "dependencies": {
     "core-js": "^3.6.5",
