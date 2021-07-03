@@ -112,8 +112,14 @@ const store = createStore({
     products(state) {
       return state.products;
     },
-    cart(state) {
-      return state.cart;
+    cartItems(state) {
+      return state.cart.items;
+    },
+    cartQuantity(state) {
+      return state.cart.qty;
+    },
+    cartTotal(state) {
+      return state.cart.total;
     },
     isLoggedIn(state) {
       return state.isLoggedIn;
