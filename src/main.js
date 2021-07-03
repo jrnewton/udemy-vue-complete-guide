@@ -10,6 +10,8 @@ const store = createStore({
       loggedIn: false
     };
   },
+  //Instead of mutating the state, actions commit mutations.
+  //Trigger them with store.dispatch
   actions: {
     login(context) {
       context.commit('setAuth', true);
@@ -27,7 +29,8 @@ const store = createStore({
       }, 2000);
     }
   },
-  //mutations are clearly defined methods which have the logic to update the state
+  //Mutations are clearly defined methods which have the logic to update the state
+  //Trigger them with 'commit'
   mutations: {
     setAuth(state, value) {
       state.loggedIn = value;
@@ -43,7 +46,7 @@ const store = createStore({
     }
   },
   getters: {
-    loggedIn(state) {
+    userIsLoggedIn(state) {
       return state.loggedIn;
     },
     count(state) {

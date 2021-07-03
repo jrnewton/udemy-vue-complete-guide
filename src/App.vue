@@ -1,5 +1,5 @@
 <template>
-  <base-container title="Vuex" v-if="loggedIn">
+  <base-container title="Vuex" v-if="userIsLoggedIn">
     <counter></counter>
     <favorite-value></favorite-value>
     <button @click="increment">Add 10 after 2 seconds</button>
@@ -30,7 +30,7 @@ export default {
     count() {
       return this.$store.state.count;
     },
-    ...mapGetters(['loggedIn'])
+    ...mapGetters(['userIsLoggedIn'])
   },
   methods: {
     increment() {

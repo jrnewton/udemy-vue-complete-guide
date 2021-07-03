@@ -1,6 +1,6 @@
 <template>
-  <button v-if="!loggedIn" @click="login">Login</button>
-  <button v-if="loggedIn" @click="logout">Logout</button>
+  <button v-if="!userIsLoggedIn" @click="login">Login</button>
+  <button v-if="userIsLoggedIn" @click="logout">Logout</button>
 </template>
 
 <script>
@@ -8,7 +8,7 @@ import { mapActions, mapGetters } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters(['loggedIn'])
+    ...mapGetters(['userIsLoggedIn'])
   },
   methods: {
     ...mapActions(['login', 'logout'])
