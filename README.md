@@ -16,4 +16,6 @@ Section 12 - [Learning Experience](https://learning-experience--udemy-vue3.netli
 
 Section 13 - [Team Members](https://team-members--udemy-vue3.netlify.app/)
 
+Section 15 - [Vue Shop](https://vue-shop--udemy-vue3.netlify.app/)
+
 Current content on main branch - https://udemy-vue3.netlify.app/
