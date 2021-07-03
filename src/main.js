@@ -3,22 +3,16 @@ import { createApp } from 'vue';
 //one store per application
 import { createStore } from 'vuex';
 
-const store = createStore({
+const counterModule = {
+  //states are always local to the module
+  //you can access other states via the 'rootState' object
+  //available on each (local) state object.
   state() {
     return {
-      count: 0,
-      loggedIn: false
+      count: 0
     };
   },
-  //Instead of mutating the state, actions commit mutations.
-  //Trigger them with store.dispatch
   actions: {
-    login(context) {
-      context.commit('setAuth', true);
-    },
-    logout(context) {
-      context.commit('setAuth', false);
-    },
     increment(context) {
       context.commit('increment');
     },
@@ -29,26 +23,20 @@ const store = createStore({
       }, 2000);
     }
   },
-  //Mutations are clearly defined methods which have the logic to update the state
-  //Trigger them with 'commit'
   mutations: {
-    setAuth(state, value) {
-      state.loggedIn = value;
-    },
     //mutations must be synchronous!
     //Put actions between components and mutations to
     //ensure you never accidently put async code in a mutation
     increment(state) {
       state.count++;
     },
+
     increase(state, payload) {
+      console.log('increase state', state);
       state.count += payload.value;
     }
   },
   getters: {
-    userIsLoggedIn(state) {
-      return state.loggedIn;
-    },
     count(state) {
       return state.count;
     },
@@ -61,6 +49,39 @@ const store = createStore({
       } else {
         return val;
       }
+    }
+  }
+};
+
+const store = createStore({
+  modules: {
+    counter: counterModule
+  },
+  state() {
+    return {
+      loggedIn: false
+    };
+  },
+  //Instead of mutating the state, actions commit mutations.
+  //Trigger them with store.dispatch
+  actions: {
+    login(context) {
+      context.commit('setAuth', true);
+    },
+    logout(context) {
+      context.commit('setAuth', false);
+    }
+  },
+  //Mutations are clearly defined methods which have the logic to update the state
+  //Trigger them with 'commit'
+  mutations: {
+    setAuth(state, value) {
+      state.loggedIn = value;
+    }
+  },
+  getters: {
+    userIsLoggedIn(state) {
+      return state.loggedIn;
     }
   }
 });
