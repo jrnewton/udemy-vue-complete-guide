@@ -12,6 +12,7 @@ export default {
   },
   data() {
     return {
+      //Project goal: migrate this application state to Vuex.
       isLoggedIn: false,
       products: [
         {
