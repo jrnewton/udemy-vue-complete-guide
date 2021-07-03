@@ -4,6 +4,10 @@ import { createApp } from 'vue';
 import { createStore } from 'vuex';
 
 const counterModule = {
+  //keep this module separated from the merged store via
+  //it's namespace key registered in createStore({ modules: ... })
+  namespaced: true,
+
   //states are always local to the module
   //you can access other states via the 'rootState' object
   //available on each (local) state object.
@@ -55,6 +59,7 @@ const counterModule = {
 
 const store = createStore({
   modules: {
+    //'counter' is the namespace for this module
     counter: counterModule
   },
   state() {

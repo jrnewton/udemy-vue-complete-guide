@@ -13,7 +13,7 @@ export default {
 
     //use this form to rename getters in this component
     ...mapGetters({
-      c: 'count'
+      c: 'counter/count'
     })
   }
 };

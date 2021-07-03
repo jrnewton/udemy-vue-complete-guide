@@ -10,7 +10,7 @@ export default {
     // count() {
     //   return this.$store.state.count;
     // }
-    ...mapGetters(['normalizedCounter'])
+    ...mapGetters({ normalizedCounter: 'counter/normalizedCounter' })
   }
 };
 </script>

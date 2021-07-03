@@ -42,7 +42,7 @@ export default {
       // });
 
       this.$store.dispatch({
-        type: 'delayedIncrease',
+        type: 'counter/delayedIncrease',
         value: 10
       });
     }

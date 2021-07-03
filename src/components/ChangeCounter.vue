@@ -12,7 +12,10 @@ export default {
     //   //takes name of mutation to perform plus a data object
     //   this.$store.dispatch('increment');
     // }
-    ...mapActions(['increment', 'delayedIncrease'])
+    ...mapActions({
+      increment: 'counter/increment',
+      delayedIncrease: 'counter/delayedIncrease'
+    })
   }
 };
 </script>
